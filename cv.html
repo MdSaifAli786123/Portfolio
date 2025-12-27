@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Saif Ali | IIT Bombay Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        bg: '#02040a',
+                        card: '#0c111c',
+                        primary: '#00f2ff', /* Electric Cyan */
+                        secondary: '#4361ee', /* Royal Blue */
+                        accent: '#7209b7', /* Deep Purple */
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(0, 242, 255, 0.3), 0 0 60px rgba(0, 242, 255, 0.1)',
+                        'neon-card': '0 0 15px rgba(67, 97, 238, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #02040a; color: #fff; overflow-x: hidden; }
+        
+        /* Canvas Background */
+        #neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a101f 0%, #02040a 100%);
+        }
+
+        /* Glassmorphism Cards */
+        .glass {
+            background: rgba(12, 17, 28, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #00f2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animations */
+        .slide-in-right { animation: slideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateX(50px); }
+        .slide-in-left { animation: slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateX(-50px); }
+        .fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
+        
+        @keyframes slideInRight { to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #02040a; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f2ff; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-black">
+
+    <canvas id="neural-bg"></canvas>
+
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-bg/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight slide-in-left">
+                MD SAIF <span class="text-primary">ALI</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 slide-in-right">
+                <a href="#experience" class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Experience</a>
+                <a href="#projects" class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Expertise</a>
+                <a href="mailto:mdali.saif99@gmail.com" class="px-6 py-2.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-bold hover:bg-primary hover:text-black transition-all shadow-neon-card hover:shadow-neon">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center relative pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="order-2 lg:order-1 slide-in-left delay-200 perspective-container">
+                <div class="glass p-10 rounded-3xl relative group transition-transform duration-500 hover:scale-[1.02]">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    
+                    <div class="relative z-10 grid grid-cols-2 gap-y-10 gap-x-6">
+                        <div>
+                            <div class="text-5xl font-mono font-bold text-white mb-2">99.2<span class="text-lg text-primary">%ile</span></div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest font-bold">GATE Score</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-mono font-bold text-white mb-2">0.8<span class="text-lg text-primary">%</span></div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest font-bold">All India Rank</div>
+                        </div>
+                        <div class="col-span-2 border-t border-white/10 pt-8 mt-2">
+                            <h3 class="text-2xl font-bold text-white mb-1">IIT Bombay</h3>
+                            <p class="text-primary font-medium">M.Tech System & Control Engineering</p>
+                            <p class="text-sm text-gray-400 mt-2">Specializing in AI/ML, Optimization & Robotics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 text-left lg:text-right slide-in-right">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider mb-8">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    Open to SDE & AI/ML Roles
+                </div>
+				<div class="order-1 lg:order-2 text-left lg:text-right slide-in-right">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider mb-8">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    Open to Collabrative Research works
+                </div>
+
+                <h1 class="text-6xl lg:text-8xl font-bold leading-tight mb-8">
+                    Syscon <br>
+                    <span class="text-gradient">MTech TA, 2025.</span>
+                </h1>
+                
+                <p class="text-xl text-gray-400 mb-10 leading-relaxed ml-auto max-w-xl">
+                    I build high-performance systems at the intersection of 
+                    <strong class="text-white">Machine Learning</strong>, 
+                    <strong class="text-white">IoT</strong>, and 
+                    <strong class="text-white">Scalable Software</strong>. 
+                    <br>State Topper (BTech medalist in CSE) & IIT Scholar.
+                </p>
+
+                <div class="flex flex-wrap gap-4 justify-start lg:justify-end">
+                    <a href="#projects" class="px-8 py-4 bg-primary text-black font-bold rounded-xl hover:bg-white transition-colors shadow-neon">
+                        View Work
+                    </a>
+                    <a href="https://linkedin.com/in/mdsaifali-iitb" target="_blank" class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center gap-3">
+                        <i class="fab fa-linkedin text-xl"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/MdSaifAli786123" target="_blank" class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center gap-3">
+                        <i class="fab fa-github text-xl"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+ <section id="education" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-20 flex items-center gap-4 fade-up">
+                <span class="w-2 h-10 bg-primary rounded-full shadow-neon"></span>
+                Academic Timeline
+            </h2>
+
+            <div class="space-y-12 border-l border-white/10 ml-3 pl-10 relative">
+                
+                <div class="fade-up delay-100 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-[#00f2ff] shadow-[0_0_15px_#00f2ff]"></span>
+                    <div class="glass bg-[#00f2ff]/5 p-8 rounded-2xl transition-all duration-300 hover:translate-x-2 hover:border-[#00f2ff]/50 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)]">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-[#00f2ff] transition-colors">M.Tech System & Control</h3>
+                                <p class="text-[#00f2ff] font-mono mt-1">Indian Institute of Technology Bombay</p>
+                            </div>
+                            <span class="text-xs font-bold bg-[#00f2ff]/10 px-3 py-1 rounded text-[#00f2ff] border border-[#00f2ff]/20">July 2025 - Present</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            <strong>Current CGPA:</strong> 8.0
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-100 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-[#bc13fe] shadow-[0_0_15px_#bc13fe]"></span>
+                    <div class="glass bg-[#bc13fe]/5 p-8 rounded-2xl transition-all duration-300 hover:translate-x-2 hover:border-[#bc13fe]/50 hover:shadow-[0_0_30px_rgba(188,19,254,0.1)]">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-[#bc13fe] transition-colors">B.Tech, Computer Science & Engineering</h3>
+                                <p class="text-[#bc13fe] font-mono mt-1">Katihar Engineering College </p>
+                            </div>
+                            <span class="text-xs font-bold bg-[#bc13fe]/10 px-3 py-1 rounded text-[#bc13fe] border border-[#bc13fe]/20">2020 - 2024</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            <strong>CGPA:</strong> 9.06 <span class="text-[#bc13fe]">•</span> Bronze Medalist <span class="text-[#bc13fe]">•</span> State Topper honoured by CM of Bihar
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-100 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-[#ff006e] shadow-[0_0_15px_#ff006e]"></span>
+                    <div class="glass bg-[#ff006e]/5 p-8 rounded-2xl transition-all duration-300 hover:translate-x-2 hover:border-[#ff006e]/50 hover:shadow-[0_0_30px_rgba(255,0,110,0.1)]">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-[#ff006e] transition-colors">Higher Secondary (Class XII)</h3>
+                                ]<p class="text-[#ff006e] font-mono mt-1">Saint Joseph's School</p>
+                            </div>
+                            <span class="text-xs font-bold bg-[#ff006e]/10 px-3 py-1 rounded text-[#ff006e] border border-[#ff006e]/20">2017 - 2019</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            <strong>Score:</strong> 94.25% <span class="text-[#ff006e]">•</span> School & City Topper
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-100 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-[#00ff9d] shadow-[0_0_15px_#00ff9d]"></span>
+                    <div class="glass bg-[#00ff9d]/5 p-8 rounded-2xl transition-all duration-300 hover:translate-x-2 hover:border-[#00ff9d]/50 hover:shadow-[0_0_30px_rgba(0,255,157,0.1)]">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-[#00ff9d] transition-colors">Secondary (Class X)</h3>
+                                <p class="text-[#00ff9d] font-mono mt-1">Saint Teresa's School </p>
+                            </div>
+                            <span class="text-xs font-bold bg-[#00ff9d]/10 px-3 py-1 rounded text-[#00ff9d] border border-[#00ff9d]/20">2017</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            <strong>Score:</strong> 91.0% <span class="text-[#00ff9d]">•</span> <strong class="text-white">100/100 in Computer Applications</strong> 
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-20 flex items-center gap-4 fade-up">
+                <span class="w-2 h-10 bg-primary rounded-full shadow-neon"></span>
+                Professional Timeline
+            </h2>
+
+            <div class="space-y-12 border-l border-white/10 ml-3 pl-10 relative">
+                
+                <div class="fade-up delay-100 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-primary shadow-neon"></span>
+                    <div class="glass p-8 rounded-2xl transition-all duration-300 hover:translate-x-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Research Intern (IoT)</h3>
+                                <p class="text-secondary font-mono mt-1">Indian Institute of Technology, Kharagpur</p>
+                            </div>
+                            <span class="text-xs font-bold bg-white/5 px-3 py-1 rounded text-gray-400 border border-white/10">May 2024 - June 2024</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Selected for prestigious offline research internship. Engineered optimization algorithms for <strong>Smart Irrigation systems</strong> using IoT sensor networks, reducing resource consumption through data-driven control.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-200 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-secondary"></span>
+                    <div class="glass p-8 rounded-2xl transition-all duration-300 hover:translate-x-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-secondary transition-colors">Salesforce Developer Intern</h3>
+                                <p class="text-secondary font-mono mt-1">Smartinternz (Remote)</p>
+                            </div>
+                            <span class="text-xs font-bold bg-white/5 px-3 py-1 rounded text-gray-400 border border-white/10">Dec 2023 - Feb 2024</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Developed scalable CRM backend modules using <strong>Apex Classes</strong> and <strong>Lightning Web Components (LWC)</strong>. Automated complex enterprise workflows using Triggers and Flows to ensure 99.9% process reliability.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-300 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-gray-600"></span>
+                    <div class="glass p-8 rounded-2xl transition-all duration-300 hover:translate-x-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Blockchain Developer Intern</h3>
+                                <p class="text-gray-400 font-mono mt-1">IIIT Allahabad</p>
+                            </div>
+                            <span class="text-xs font-bold bg-white/5 px-3 py-1 rounded text-gray-400 border border-white/10">Jan 2023 - Feb 2023</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Researched decentralized ledger technologies. Implemented Smart Contracts and analyzed <strong>PoW/PoS consensus mechanisms</strong> and Ethereum security vulnerabilities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-up delay-300 relative group">
+                    <span class="absolute -left-[45px] top-2 w-4 h-4 rounded-full bg-bg border-2 border-gray-600"></span>
+                    <div class="glass p-8 rounded-2xl transition-all duration-300 hover:translate-x-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Placement Coordinator</h3>
+                                <p class="text-gray-400 font-mono mt-1">KEC Katihar</p>
+                            </div>
+                            <span class="text-xs font-bold bg-white/5 px-3 py-1 rounded text-gray-400 border border-white/10">2021 - 2024</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Led corporate relations and campus recruitment drives for 3 years. Managed event logistics, student training, and stakeholder communication, demonstrating strong <strong>Sales & Event Management</strong> skills.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center fade-up">Featured <span class="text-primary">Inventions</span></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="glass p-8 rounded-2xl group hover:border-primary/50 transition-all duration-500 fade-up delay-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">VAE Paper Reproduction</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-20">
+                        Full implementation of "Auto-Encoding Variational Bayes". Optimized ELBO loss and Gaussian latent sampling using PyTorch for generative AI modeling.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded">Python</span>
+                        <span class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded">PyTorch</span>
+                        <span class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded">GenAI</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl group hover:border-secondary/50 transition-all duration-500 fade-up delay-200">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Scalable Education Bot</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-20">
+                        Architected an automation bot serving 9,500+ students. Built on AWS with REST APIs to handle high-concurrency content delivery.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs font-mono text-secondary bg-secondary/10 rounded">AWS</span>
+                        <span class="px-2 py-1 text-xs font-mono text-secondary bg-secondary/10 rounded">Automation</span>
+                        <span class="px-2 py-1 text-xs font-mono text-secondary bg-secondary/10 rounded">Backend</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl group hover:border-accent/50 transition-all duration-500 fade-up delay-300">
+                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sign Language Detection</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-20">
+                        Real-time gesture recognition system fusing Computer Vision (CNNs) with IoT motion sensors for accurate sign-to-text translation.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs font-mono text-accent bg-accent/10 rounded">OpenCV</span>
+                        <span class="px-2 py-1 text-xs font-mono text-accent bg-accent/10 rounded">IoT</span>
+                        <span class="px-2 py-1 text-xs font-mono text-accent bg-accent/10 rounded">CNN</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-card/30">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            
+            <div class="fade-up">
+                <h3 class="text-2xl font-bold mb-8 text-white">Technical Arsenal</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">Python & C++</span>
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">PyTorch & TensorFlow</span>
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">IoT & Embedded</span>
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">AWS & Cloud</span>
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">Docker & Git</span>
+                    <span class="skill-tag px-4 py-2 glass rounded-lg text-gray-300 text-sm border border-white/5 hover:border-primary hover:text-primary transition-colors cursor-default">Azure Cognitive</span>
+                </div>
+            </div>
+
+            <div class="fade-up delay-100">
+                <h3 class="text-2xl font-bold mb-8 text-white">Certifications</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 glass rounded-xl border-l-4 border-primary">
+                        <i class="fas fa-vr-cardboard text-primary text-xl"></i>
+                        <div>
+                            <div class="font-bold text-white">Bootcamp on Augmented & Virtual Reality</div>
+                            <div class="text-xs text-gray-500">Specialized Training</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 glass rounded-xl border-l-4 border-secondary">
+                        <i class="fas fa-eye text-secondary text-xl"></i>
+                        <div>
+                            <div class="font-bold text-white">Build a computer vision app with Azure</div>
+                            <div class="text-xs text-gray-500">Microsoft Cognitive Services</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 glass rounded-xl border-l-4 border-accent">
+                        <i class="fas fa-network-wired text-accent text-xl"></i>
+                        <div>
+                            <div class="font-bold text-white">Introduction to Internet of Things</div>
+                            <div class="text-xs text-gray-500">IoT Fundamentals</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10 bg-[#000] text-center">
+        <h2 class="text-2xl font-bold mb-8">Ready to Collaborate?</h2>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="mailto:mdali.saif99@gmail.com" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-primary hover:scale-110 transition-all">
+                <i class="fas fa-envelope text-xl"></i>
+            </a>
+            <a href="https://linkedin.com/in/mdsaifali-iitb" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-[#0077b5] hover:scale-110 transition-all">
+                <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="https://github.com/MdSaifAli786123" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:scale-110 transition-all">
+                <i class="fab fa-github text-xl"></i>
+            </a>
+        </div>
+        <p class="text-gray-600 text-sm">© 2025 Md Saif Ali. Engineered in India.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('neural-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        // Configuration
+        const particleCount = 60; // Not too crowded
+        const connectionDistance = 150;
+        const mouseDistance = 200;
+
+        // Resize handling
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Mouse tracking
+        let mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interaction
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+                        const directionX = forceDirectionX * force * 0.6;
+                        const directionY = forceDirectionY * force * 0.6;
+                        this.vx += directionX;
+                        this.vy += directionY;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = '#00f2ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw connections
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${1 - distance/connectionDistance})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
